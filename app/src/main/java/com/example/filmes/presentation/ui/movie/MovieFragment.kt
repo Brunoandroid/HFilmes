@@ -21,6 +21,8 @@ class MovieFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        bindingMovie.recyclerViewMovie.showShimmer()
+
         return bindingMovie.root
     }
 

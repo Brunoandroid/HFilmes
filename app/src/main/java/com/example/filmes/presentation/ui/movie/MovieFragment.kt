@@ -1,11 +1,13 @@
 package com.example.filmes.presentation.ui.movie
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.graphics.toColorFilter
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -80,6 +82,8 @@ class MovieFragment : Fragment() {
 
         val search = menu.findItem(R.id.searchMovie)
         val searchView = search.actionView as androidx.appcompat.widget.SearchView
+        searchView.setBackgroundColor(Color.WHITE)
+
         searchView.queryHint = "Digite o nome do filme"
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,

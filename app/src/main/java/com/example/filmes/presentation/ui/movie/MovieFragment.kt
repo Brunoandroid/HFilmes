@@ -72,8 +72,10 @@ class MovieFragment : Fragment() {
     }
 
     private fun requestApiMovie() {
-        movieViewModel.movies?.observe(viewLifecycleOwner) { response ->
-            adapter.submitData(viewLifecycleOwner.lifecycle, response)
+        lifecycleScope.launch {
+            movieViewModel.movies?.observe(viewLifecycleOwner) { response ->
+                adapter.submitData(viewLifecycleOwner.lifecycle, response)
+            }
         }
     }
 
@@ -93,7 +95,10 @@ class MovieFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Code
+                if (newText != null) {
+                    movieViewModel.movies.value
+                    movieViewModel.getSearchMovie(newText)
+                }
                 return true
             }
 

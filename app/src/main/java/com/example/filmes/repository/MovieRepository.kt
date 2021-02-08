@@ -18,6 +18,16 @@ class MovieRepository @Inject constructor(private val movieApi: MovieApi) {
                 maxSize = 20,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { MoviePagingSource(movieApi, language) }
+            pagingSourceFactory = { MoviePagingSource(movieApi, null, language) }
+        ).liveData
+
+    fun getSearchMovie(query: String, language: String) =
+        Pager(
+            config = PagingConfig(
+                pageSize = 5,
+                maxSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { MoviePagingSource(movieApi, query, language) }
         ).liveData
 }

@@ -11,13 +11,15 @@ private const val PAGE_INDEX = 1
 
 class MoviePagingSource(
     private val movieApi: MovieApi,
+    private val query: String?,
     private val language: String
 ) : PagingSource<Int, Movie>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
 
         return try {
             val pagePosition = params.key ?: PAGE_INDEX
-            val response = movieApi.getNowPlayingMovies(pagePosition, language)
+            val response = if(query != null) movieApi.getSearchMovie(pagePosition, query, language) else
+                movieApi.getNowPlayingMovies(pagePosition, language)
             val movies = response.body()?.movies
 
             LoadResult.Page(

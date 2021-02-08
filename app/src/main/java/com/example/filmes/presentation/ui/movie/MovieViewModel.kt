@@ -4,22 +4,40 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.filmes.models.Movie
 import com.example.filmes.repository.Repository
 
 
 class MovieViewModel @ViewModelInject constructor(
     private val repository: Repository,
-    application: Application
+    application: Application,
+    @Assisted state: SavedStateHandle
 ) : AndroidViewModel(application) {
 
-    val movies = repository.movieRepository.getNowPlayingMovies("pt-BR").cachedIn(viewModelScope)
+    companion object {
+        private const val CURRENT_QUERY = "current_query"
+        private const val EMPTY_QUERY = ""
+    }
+
+    private val currentQuery = state.getLiveData(CURRENT_QUERY, EMPTY_QUERY)
+    val movies = currentQuery.switchMap { query ->
+        if (!query.isEmpty()) {
+            repository.movieRepository.getSearchMovie(query, "pt-BR")
+        } else {
+            repository.movieRepository.getNowPlayingMovies("pt-BR").cachedIn(viewModelScope)
+        }
+
+    }
+
+    fun getSearchMovie(query: String){
+        currentQuery.value = query
+    }
 
     // Verifica se tem internet
     fun hasInternetConnection(): Boolean {

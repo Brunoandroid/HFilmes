@@ -25,8 +25,10 @@ data class Movie(
     val title: String,
     @SerializedName("video")
     val video: Boolean,
+    /*
     @SerializedName("vote_average")
     val voteAverage: Int,
+     */
     @SerializedName("vote_count")
     val voteCount: Int
 ) {

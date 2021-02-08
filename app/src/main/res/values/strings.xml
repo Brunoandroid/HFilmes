@@ -6,6 +6,9 @@
 
     <!-- Fragment Movie -->
     <string name="title_toolbar_fragment_movie">HFILMES</string>
+    <string name="sem_acesso">Sem acesso a internet</string>
+    <string name="erro_desconhecido">Erro Desconhecido</string>
+    <string name="button_tente_novamente">Tentar Novamente</string>
 
     <!-- Menu Bottom Navegation Movie -->
     <string name="item_filme">Filmes</string>
@@ -13,5 +16,13 @@
 
     <!-- Menu Toolbar Movie -->
     <string name="item_pesquisar">Pesquisar</string>
+
+    <!-- BindingMovieAdapters -->
+    <string name="descricao_movie_vazia">Descrição do filme não encontrada</string>
+
+    <!-- Textos Tools -->
+    <string name="descricao_filme_tools">Descrição do Filme</string>
+    <string name="nome_filme_tools">Nome do filme</string>
+    <string name="text_info">Informação</string>
 
 </resources>

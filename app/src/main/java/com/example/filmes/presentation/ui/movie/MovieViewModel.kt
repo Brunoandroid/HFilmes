@@ -6,10 +6,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.cachedIn
 import com.example.filmes.repository.Repository
 
@@ -28,9 +25,9 @@ class MovieViewModel @ViewModelInject constructor(
     private val currentQuery = state.getLiveData(CURRENT_QUERY, EMPTY_QUERY)
     val movies = currentQuery.switchMap { query ->
         if (!query.isEmpty()) {
-            repository.movieRepository.getSearchMovie(query, "pt-BR")
+            repository.movieRepository.getSearchMovie(query, "pt-BR").asLiveData()
         } else {
-            repository.movieRepository.getNowPlayingMovies("pt-BR").cachedIn(viewModelScope)
+            repository.movieRepository.getNowPlayingMovies("pt-BR").cachedIn(viewModelScope).asLiveData()
         }
 
     }

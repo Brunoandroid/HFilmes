@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmes.R
 import com.example.filmes.databinding.FragmentMovieBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -73,7 +74,7 @@ class MovieFragment : Fragment() {
 
     private fun requestApiMovie() {
         lifecycleScope.launch {
-            movieViewModel.movies?.observe(viewLifecycleOwner) { response ->
+            movieViewModel.movies.observe(viewLifecycleOwner) { response ->
                 adapter.submitData(viewLifecycleOwner.lifecycle, response)
             }
         }
@@ -96,7 +97,6 @@ class MovieFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
-                    movieViewModel.movies.value
                     movieViewModel.getSearchMovie(newText)
                 }
                 return true

@@ -8,27 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.filmes.databinding.RowMovieItemBinding
 import com.example.filmes.models.Movie
 
-class MovieAdapter : PagingDataAdapter<Movie, MovieAdapter.MyViewHolder>(COMPARATOR) {
-
-    class MyViewHolder(private val binding: RowMovieItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(movie: Movie) {
-            binding.movie = movie
-            binding.executePendingBindings()
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): MyViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = RowMovieItemBinding.inflate(layoutInflater, parent, false)
-                return MyViewHolder(binding)
-            }
-        }
-    }
+class MovieAdapter(private val listener : OnItemClickListener) : PagingDataAdapter<Movie, MovieAdapter.MyViewHolder>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder.from(parent)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = RowMovieItemBinding.inflate(layoutInflater, parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -36,6 +21,32 @@ class MovieAdapter : PagingDataAdapter<Movie, MovieAdapter.MyViewHolder>(COMPARA
         if (currentItem != null) {
             holder.bind(currentItem)
         }
+    }
+
+    inner class MyViewHolder(private val binding: RowMovieItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION){
+                    val item = getItem(position)
+                    if (item!=null){
+                        listener.onItemClick(item)
+                    }
+                }
+            }
+        }
+
+        fun bind(movie: Movie) {
+            binding.movie = movie
+            binding.executePendingBindings()
+
+        }
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(movie: Movie)
     }
 
     companion object {

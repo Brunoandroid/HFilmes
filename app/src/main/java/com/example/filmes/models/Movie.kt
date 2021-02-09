@@ -1,7 +1,10 @@
 package com.example.filmes.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Movie(
     @SerializedName("adult")
     val adult: Boolean,
@@ -31,7 +34,7 @@ data class Movie(
      */
     @SerializedName("vote_count")
     val voteCount: Int
-) {
+): Parcelable {
 
     val baseUrlImage get() = "https://image.tmdb.org/t/p/w500"
 

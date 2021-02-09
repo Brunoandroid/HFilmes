@@ -2,29 +2,26 @@ package com.example.filmes.presentation.ui.movie
 
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.graphics.toColorFilter
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmes.R
 import com.example.filmes.databinding.FragmentMovieBinding
+import com.example.filmes.models.Movie
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MovieFragment : Fragment() {
+class MovieFragment : Fragment(), MovieAdapter.OnItemClickListener {
 
-    val adapter by lazy { MovieAdapter() }
+    val adapter by lazy { MovieAdapter(this) }
 
     val movieViewModel: MovieViewModel by viewModels()
 
@@ -78,6 +75,11 @@ class MovieFragment : Fragment() {
                 adapter.submitData(viewLifecycleOwner.lifecycle, response)
             }
         }
+    }
+
+    override fun onItemClick(movie: Movie) {
+       val action = MovieFragmentDirections.actionMovieFragmentToDetailsFragment(movie)
+       findNavController().navigate(action)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

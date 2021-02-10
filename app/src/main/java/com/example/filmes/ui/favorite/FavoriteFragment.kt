@@ -1,4 +1,4 @@
-package com.example.filmes.presentation.ui.favorite
+package com.example.filmes.ui.favorite
 
 import android.os.Bundle
 import android.view.*

@@ -1,10 +1,9 @@
-package com.example.filmes.presentation.ui.movie
+package com.example.filmes.ui.movie
 
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.filmes.R
 import com.example.filmes.databinding.FragmentMovieBinding
-import com.example.filmes.models.Movie
+import com.example.filmes.data.model.Movie
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

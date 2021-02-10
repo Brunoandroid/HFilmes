@@ -1,6 +1,6 @@
-package com.example.filmes.presentation.di
+package com.example.filmes.filmes.di
 
-import com.example.filmes.data.api.MovieApi
+import com.example.filmes.data.service.MovieApi
 import com.example.filmes.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.example.filmes.bindingadapters
+package com.example.filmes.ui.movie
 
 import android.widget.ImageView
 import android.widget.TextView

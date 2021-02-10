@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     style="@style/Theme.AppCompat.NoActionBar"
-    tools:context=".presentation.ui.details.DetailsFragment">
+    tools:context=".ui.details.DetailsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

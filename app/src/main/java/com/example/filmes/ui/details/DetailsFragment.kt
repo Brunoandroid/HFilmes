@@ -1,4 +1,4 @@
-package com.example.filmes.presentation.ui.details
+package com.example.filmes.ui.details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
-import com.example.filmes.R
 import com.example.filmes.databinding.FragmentDetailsBinding
-import com.example.filmes.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

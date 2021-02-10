@@ -1,6 +1,6 @@
-package com.example.filmes.data.api
+package com.example.filmes.data.service
 
-import com.example.filmes.models.MovieResponse
+import com.example.filmes.data.model.MovieResponse
 import com.example.filmes.util.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET

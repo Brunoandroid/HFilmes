@@ -1,12 +1,11 @@
-package com.example.filmes.repository
+package com.example.filmes.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.liveData
-import com.example.filmes.data.api.MovieApi
+import com.example.filmes.data.service.MovieApi
 import com.example.filmes.data.paging.MoviePagingSource
-import com.example.filmes.models.Movie
+import com.example.filmes.data.model.Movie
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton

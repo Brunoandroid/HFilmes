@@ -1,9 +1,8 @@
 package com.example.filmes.data.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
-import com.example.filmes.data.api.MovieApi
-import com.example.filmes.models.Movie
+import com.example.filmes.data.service.MovieApi
+import com.example.filmes.data.model.Movie
 import retrofit2.HttpException
 import java.io.IOException
 

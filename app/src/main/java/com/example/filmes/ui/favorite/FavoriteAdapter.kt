@@ -9,7 +9,7 @@ import com.example.filmes.databinding.RowMovieItemBinding
 
 class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
-    private lateinit var list: List<FavoriteMovie>
+    private var list: List<Movie> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val binding =
@@ -23,11 +23,16 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>
 
     inner class FavoriteViewHolder(private val binding: RowMovieItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(favoriteMovie: FavoriteMovie){
-
+        fun bind(movie: Movie) {
+            binding.movie = movie
         }
     }
 
-
     override fun getItemCount(): Int = list.size
+
+    fun setMovieList(list: List<Movie>){
+        this.list = list
+        notifyDataSetChanged()
+    }
+
 }

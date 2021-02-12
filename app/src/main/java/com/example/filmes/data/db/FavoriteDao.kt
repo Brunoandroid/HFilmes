@@ -12,8 +12,8 @@ interface FavoriteDao {
     @Insert
     suspend fun addToFavorite(favoriteMovie: FavoriteMovie)
 
-    @Query("SELECT * FROM favorite_movie")
-    fun getFavorite(): LiveData<List<FavoriteMovie>>
+    @Query("SELECT movie FROM favorite_movie")
+    fun getFavorite(): LiveData<List<Movie>>
 
     @Query("SELECT count(*) FROM favorite_movie WHERE favorite_movie.movie = :movie")
     suspend fun checkMovie(movie: Movie): Int

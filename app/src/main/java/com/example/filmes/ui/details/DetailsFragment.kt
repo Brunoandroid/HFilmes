@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.filmes.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,6 +15,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailsFragment : Fragment() {
 
     private val args by navArgs<DetailsFragmentArgs>()
+
+    val detailsViewModel: DetailsViewModel by viewModels()
 
     lateinit var _bindingDetails: FragmentDetailsBinding
     val bindingDetails: FragmentDetailsBinding get() = _bindingDetails
@@ -26,8 +29,15 @@ class DetailsFragment : Fragment() {
         _bindingDetails = FragmentDetailsBinding.inflate(inflater, container, false)
 
         val movie = args.movie
+        bindingDetails.movie = movie
 
-        Toast.makeText(requireContext(), ""+movie.title, Toast.LENGTH_SHORT).show()
+        var isToggleChecked = false
+
+        bindingDetails.toggleFavorite.setOnClickListener{
+            isToggleChecked = !isToggleChecked
+
+            bindingDetails.toggleFavorite.isChecked = isToggleChecked
+        }
 
         return bindingDetails.root
 

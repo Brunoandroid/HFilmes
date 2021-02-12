@@ -1,11 +1,15 @@
-package com.example.filmes.filmes.di
+package com.example.filmes.di
 
+import android.content.Context
+import androidx.room.Room
+import com.example.filmes.data.db.AppDBFavorite
 import com.example.filmes.data.service.MovieApi
 import com.example.filmes.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,6 +19,22 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 object AppModule {
+
+    //
+    @Singleton
+    @Provides
+    fun provideFavMovieDatabase(
+        @ApplicationContext app:Context
+    ) = Room.databaseBuilder(
+        app,
+        AppDBFavorite::class.java,
+        "movie_db"
+    ).build()
+
+    @Singleton
+    @Provides
+    fun provideFavMovieDao(db: AppDBFavorite) = db.getFavoriteDao()
+    //
 
     @Singleton
     @Provides

@@ -1,16 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-    style="@style/Theme.AppCompat.NoActionBar"
-    tools:context=".ui.details.DetailsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="movie"
+            type="com.example.filmes.data.model.Movie" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/Theme.AppCompat.NoActionBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/lightGray"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:context=".ui.details.DetailsFragment">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/imageBannerMovie"
+                loadImageFavorite="@{movie.baseUrlImage+movie.backdropPath}"
+                android:layout_width="match_parent"
+                android:layout_height="280sp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars[2]" />
+
+            <View
+                android:id="@+id/viewShade"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:background="@drawable/shade"
+                app:layout_constraintBottom_toBottomOf="@+id/imageBannerMovie"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textTitleMovie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{movie.title}"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageBannerMovie"
+                app:layout_constraintStart_toStartOf="@+id/viewShade"
+                app:layout_constraintTop_toTopOf="@+id/viewShade"
+                tools:text="@string/nome_filme_tools" />
+
+            <ToggleButton
+                android:id="@+id/toggleFavorite"
+                android:layout_width="38sp"
+                android:layout_height="38sp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/favorite_toggle"
+                android:textOff=""
+                android:textOn=""
+                app:layout_constraintBottom_toBottomOf="@+id/imageBannerMovie"
+                app:layout_constraintEnd_toEndOf="@+id/viewShade"
+                app:layout_constraintTop_toTopOf="@+id/viewShade" />
+
+            <TextView
+                android:id="@+id/descriptionFavoriteMovie"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="left|center_horizontal"
+                android:text="@{movie.overview}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageBannerMovie"
+                tools:text="@string/descricao_filme_tools" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

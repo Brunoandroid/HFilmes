@@ -36,7 +36,7 @@ class DetailsFragment : Fragment() {
         var isToggleChecked = false
 
         lifecycleScope.launch {
-            val countFavorite = detailsViewModel.checkMovie(movie.id)
+            val countFavorite = detailsViewModel.checkMovie(movie)
             if (countFavorite > 0){
                 bindingDetails.toggleFavorite.isChecked = true
                 isToggleChecked = true
@@ -51,7 +51,7 @@ class DetailsFragment : Fragment() {
             if (isToggleChecked) {
                 detailsViewModel.addFavotite(movie)
             } else {
-                detailsViewModel.remoteFromFavorite(movie.id)
+                detailsViewModel.remoteFromFavorite(movie)
             }
 
             bindingDetails.toggleFavorite.isChecked = isToggleChecked

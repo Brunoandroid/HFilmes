@@ -28,8 +28,9 @@ object AppModule {
     ) = Room.databaseBuilder(
         app,
         AppDBFavorite::class.java,
-        "movie_db"
+        "movie_db_favorite"
     ).build()
+
 
     @Singleton
     @Provides

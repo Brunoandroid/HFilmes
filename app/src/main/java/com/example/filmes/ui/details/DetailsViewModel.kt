@@ -15,21 +15,16 @@ class DetailsViewModel @ViewModelInject constructor(
     fun addFavotite(movie: Movie) {
         viewModelScope.launch {
             repositoryDetails.addToFavorite(
-                FavoriteMovie(
-                    movie.id,
-                    movie.originalTitle,
-                    movie.overview,
-                    movie.posterPath
-                )
+               movie
             )
         }
     }
 
-    suspend fun checkMovie(id: Int) = repositoryDetails.checkMovie(id)
+    suspend fun checkMovie(movie: Movie) = repositoryDetails.checkMovie(movie)
 
-    fun remoteFromFavorite(id: Int) {
+    fun remoteFromFavorite(movie: Movie) {
         viewModelScope.launch {
-            repositoryDetails.removeFromFavorite(id)
+            repositoryDetails.removeFromFavorite(movie)
         }
     }
 

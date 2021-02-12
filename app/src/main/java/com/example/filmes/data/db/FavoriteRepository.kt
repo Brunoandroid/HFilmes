@@ -7,11 +7,11 @@ class FavoriteRepository @Inject constructor(
     private val favoriteDao: FavoriteDao
 ) {
 
-    suspend fun addToFavorite(favoriteMovie: FavoriteMovie) = favoriteDao.addToFavorite(favoriteMovie)
+    suspend fun addToFavorite(movie: Movie) = favoriteDao.addToFavorite(FavoriteMovie(movie))
     fun getFavoriteMovies() = favoriteDao.getFavorite()
-    suspend fun checkMovie(id: Int) = favoriteDao.checkMovie(id)
-    suspend fun removeFromFavorite(id: Int){
-        favoriteDao.removeFromFavorite(id)
+    suspend fun checkMovie(movie: Movie) = favoriteDao.checkMovie(movie)
+    suspend fun removeFromFavorite(movie: Movie){
+        favoriteDao.removeFromFavorite(movie)
     }
 
 }

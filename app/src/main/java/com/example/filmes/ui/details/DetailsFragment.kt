@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.filmes.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -33,8 +35,24 @@ class DetailsFragment : Fragment() {
 
         var isToggleChecked = false
 
-        bindingDetails.toggleFavorite.setOnClickListener{
+        lifecycleScope.launch {
+            val countFavorite = detailsViewModel.checkMovie(movie.id)
+            if (countFavorite > 0){
+                bindingDetails.toggleFavorite.isChecked = true
+                isToggleChecked = true
+            } else {
+                bindingDetails.toggleFavorite.isChecked = false
+                isToggleChecked = false
+            }
+        }
+
+        bindingDetails.toggleFavorite.setOnClickListener {
             isToggleChecked = !isToggleChecked
+            if (isToggleChecked) {
+                detailsViewModel.addFavotite(movie)
+            } else {
+                detailsViewModel.remoteFromFavorite(movie.id)
+            }
 
             bindingDetails.toggleFavorite.isChecked = isToggleChecked
         }

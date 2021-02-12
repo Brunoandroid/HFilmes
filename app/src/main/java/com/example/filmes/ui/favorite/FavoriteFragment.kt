@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
+
     lateinit var _bindingFavorite: FragmentFavoriteBinding
     val bindingFavorite: FragmentFavoriteBinding get() = _bindingFavorite
 
@@ -19,6 +20,8 @@ class FavoriteFragment : Fragment() {
     ): View? {
 
         _bindingFavorite = FragmentFavoriteBinding.inflate(inflater, container, false)
+
+        bindingFavorite.recyclerFavorite
 
         setHasOptionsMenu(true)
 

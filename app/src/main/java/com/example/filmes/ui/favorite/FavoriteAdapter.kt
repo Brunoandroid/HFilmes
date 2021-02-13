@@ -2,10 +2,12 @@ package com.example.filmes.ui.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmes.data.db.FavoriteMovie
 import com.example.filmes.data.model.Movie
 import com.example.filmes.databinding.RowMovieItemBinding
+import com.example.filmes.ui.movie.MovieFragmentDirections
 
 class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
@@ -25,6 +27,12 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.movie = movie
+
+            binding.rowItemMovie.setOnClickListener {
+                val action = FavoriteFragmentDirections.actionFavoriteFragmentToDetailsFragment(movie)
+                binding.rowItemMovie.findNavController().navigate(action)
+            }
+
         }
     }
 

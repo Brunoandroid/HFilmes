@@ -18,9 +18,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MovieFragment : Fragment(), MovieAdapter.OnItemClickListener {
+class MovieFragment : Fragment() {
 
-    val adapter by lazy { MovieAdapter(this) }
+    val adapter by lazy { MovieAdapter() }
 
     val movieViewModel: MovieViewModel by viewModels()
 
@@ -74,11 +74,6 @@ class MovieFragment : Fragment(), MovieAdapter.OnItemClickListener {
                 adapter.submitData(viewLifecycleOwner.lifecycle, response)
             }
         }
-    }
-
-    override fun onItemClick(movie: Movie) {
-       val action = MovieFragmentDirections.actionMovieFragmentToDetailsFragment(movie)
-       findNavController().navigate(action)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

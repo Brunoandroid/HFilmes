@@ -1,4 +1,4 @@
-package com.example.filmes.data.db
+package com.example.filmes.data.db.favorite
 
 import android.os.Parcelable
 import androidx.room.Entity

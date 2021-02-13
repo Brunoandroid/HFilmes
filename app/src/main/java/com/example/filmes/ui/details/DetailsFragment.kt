@@ -49,7 +49,7 @@ class DetailsFragment : Fragment() {
         bindingDetails.toggleFavorite.setOnClickListener {
             isToggleChecked = !isToggleChecked
             if (isToggleChecked) {
-                detailsViewModel.addFavotite(movie)
+                    detailsViewModel.addFavotite(movie)
             } else {
                 detailsViewModel.remoteFromFavorite(movie)
             }

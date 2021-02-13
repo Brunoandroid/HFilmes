@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.filmes.data.db.FavoriteMovie
 import com.example.filmes.data.model.Movie
 import com.example.filmes.databinding.RowMovieItemBinding
-import com.example.filmes.ui.movie.MovieFragmentDirections
 
 class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 

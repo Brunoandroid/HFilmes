@@ -3,28 +3,27 @@ package com.example.filmes.ui.details
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.filmes.data.db.FavoriteMovie
-import com.example.filmes.data.db.FavoriteRepository
 import com.example.filmes.data.model.Movie
+import com.example.filmes.repository.Repository
 import kotlinx.coroutines.launch
 
 class DetailsViewModel @ViewModelInject constructor(
-    private val repositoryDetails: FavoriteRepository
+    private val repository: Repository
 ) : ViewModel() {
 
     fun addFavotite(movie: Movie) {
         viewModelScope.launch {
-            repositoryDetails.addToFavorite(
+            repository.favoriteRepository.addToFavorite(
                movie
             )
         }
     }
 
-    suspend fun checkMovie(movie: Movie) = repositoryDetails.checkMovie(movie)
+    suspend fun checkMovie(movie: Movie) = repository.favoriteRepository.checkMovie(movie)
 
     fun remoteFromFavorite(movie: Movie) {
         viewModelScope.launch {
-            repositoryDetails.removeFromFavorite(movie)
+            repository.favoriteRepository.removeFromFavorite(movie)
         }
     }
 

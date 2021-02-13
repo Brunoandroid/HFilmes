@@ -1,4 +1,4 @@
-package com.example.filmes.data.repository
+package com.example.filmes.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig

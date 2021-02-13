@@ -2,7 +2,7 @@ package com.example.filmes.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.filmes.data.db.AppDBFavorite
+import com.example.filmes.data.db.favorite.AppDBFavorite
 import com.example.filmes.data.service.MovieApi
 import com.example.filmes.util.Constants.Companion.BASE_URL
 import dagger.Module

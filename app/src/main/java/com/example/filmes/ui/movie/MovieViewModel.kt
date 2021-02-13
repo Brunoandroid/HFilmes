@@ -8,7 +8,7 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import androidx.paging.cachedIn
-import com.example.filmes.data.repository.Repository
+import com.example.filmes.repository.Repository
 
 
 class MovieViewModel @ViewModelInject constructor(

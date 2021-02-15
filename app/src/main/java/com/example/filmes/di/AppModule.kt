@@ -3,7 +3,7 @@ package com.example.filmes.di
 import android.content.Context
 import androidx.room.Room
 import com.example.filmes.data.db.favorite.AppDBFavorite
-import com.example.filmes.data.service.MovieApi
+import com.example.filmes.data.service.RequestApi
 import com.example.filmes.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -67,8 +67,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providerApiService(retrofit: Retrofit): MovieApi {
-        return retrofit.create(MovieApi::class.java)
+    fun providerApiService(retrofit: Retrofit): RequestApi {
+        return retrofit.create(RequestApi::class.java)
     }
 
 }

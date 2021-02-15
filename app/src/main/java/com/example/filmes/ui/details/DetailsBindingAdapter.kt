@@ -10,9 +10,9 @@ class DetailsBindingAdapter {
 
     companion object {
 
-        @BindingAdapter("loadImageFavorite")
+        @BindingAdapter("loadImageDescription")
         @JvmStatic
-        fun loadImageFavorite(imageView: ImageView, urlImage: String){
+        fun loadImageDescription(imageView: ImageView, urlImage: String?){
             Glide.with(imageView)
                 .load(urlImage)
                 .transition(DrawableTransitionOptions.withCrossFade())

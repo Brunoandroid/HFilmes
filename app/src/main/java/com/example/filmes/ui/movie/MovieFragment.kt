@@ -9,11 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.filmes.R
 import com.example.filmes.databinding.FragmentMovieBinding
-import com.example.filmes.data.model.Movie
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

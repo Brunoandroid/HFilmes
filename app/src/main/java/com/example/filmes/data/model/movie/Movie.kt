@@ -1,8 +1,7 @@
-package com.example.filmes.data.model
+package com.example.filmes.data.model.movie
 
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.example.filmes.data.model.cast.Cast
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -38,4 +37,5 @@ data class Movie(
     val voteCount: Int
 ): Parcelable {
     val baseUrlImage get() = "https://image.tmdb.org/t/p/w500"
+    var listCast: List<Cast> = emptyList()
 }

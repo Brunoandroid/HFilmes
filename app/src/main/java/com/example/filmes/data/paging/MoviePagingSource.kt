@@ -1,15 +1,15 @@
 package com.example.filmes.data.paging
 
 import androidx.paging.PagingSource
-import com.example.filmes.data.service.MovieApi
-import com.example.filmes.data.model.Movie
+import com.example.filmes.data.service.RequestApi
+import com.example.filmes.data.model.movie.Movie
 import retrofit2.HttpException
 import java.io.IOException
 
 private const val PAGE_INDEX = 1
 
 class MoviePagingSource(
-    private val movieApi: MovieApi,
+    private val requestApi: RequestApi,
     private val query: String?,
     private val language: String
 ) : PagingSource<Int, Movie>() {
@@ -17,8 +17,8 @@ class MoviePagingSource(
 
         return try {
             val pagePosition = params.key ?: PAGE_INDEX
-            val response = if(query != null) movieApi.getSearchMovie(pagePosition, query, language) else
-                movieApi.getNowPlayingMovies(pagePosition, language)
+            val response = if(query != null) requestApi.getSearchMovie(pagePosition, query, language) else
+                requestApi.getNowPlayingMovies(pagePosition, language)
             val movies = response.body()?.movies
 
             LoadResult.Page(

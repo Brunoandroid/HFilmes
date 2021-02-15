@@ -2,7 +2,7 @@ package com.example.filmes.repository
 
 import com.example.filmes.data.db.favorite.FavoriteDao
 import com.example.filmes.data.db.favorite.FavoriteMovie
-import com.example.filmes.data.model.Movie
+import com.example.filmes.data.model.movie.Movie
 import javax.inject.Inject
 
 class FavoriteRepository @Inject constructor(

@@ -24,5 +24,7 @@
     <string name="descricao_filme_tools">Descrição do Filme</string>
     <string name="nome_filme_tools">Nome do filme</string>
     <string name="text_info">Informação</string>
+    <string name="nome_personagem">Nome do Personagem</string>
+    <string name="elenco_movie">Elenco</string>
 
 </resources>

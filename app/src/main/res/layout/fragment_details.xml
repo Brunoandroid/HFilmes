@@ -6,10 +6,10 @@
     <data>
         <variable
             name="movie"
-            type="com.example.filmes.data.model.Movie" />
+            type="com.example.filmes.data.model.movie.Movie" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         style="@style/Theme.AppCompat.NoActionBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +26,7 @@
 
             <ImageView
                 android:id="@+id/imageBannerMovie"
-                loadImageFavorite="@{movie.baseUrlImage+movie.backdropPath}"
+                loadImageDescription="@{movie.baseUrlImage+movie.backdropPath}"
                 android:layout_width="match_parent"
                 android:layout_height="280sp"
                 android:scaleType="centerCrop"
@@ -87,9 +87,42 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageBannerMovie"
                 tools:text="@string/descricao_filme_tools" />
 
+            <TextView
+                android:id="@+id/textCharacters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionFavoriteMovie"
+                tools:text="@string/elenco_movie"
+                android:text="@string/elenco_movie"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerCharacter"
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="4dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textCharacters"
+                app:layout_constraintVertical_bias="0.0"
+                tools:listitem="@layout/row_character_movie" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </layout>

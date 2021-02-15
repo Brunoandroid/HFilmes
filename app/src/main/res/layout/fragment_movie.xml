@@ -51,6 +51,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        tools:listitem="@layout/row_movie_item"
         app:shimmer_recycler_item_count="5"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"

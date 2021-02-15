@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.filmes.data.db.favorite.FavoriteMovie
-import com.example.filmes.data.model.Movie
+import com.example.filmes.data.model.movie.Movie
 
 @Dao
 interface FavoriteDao {

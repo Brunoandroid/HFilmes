@@ -3,7 +3,7 @@ package com.example.filmes.data.db.favorite
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.filmes.data.model.Movie
+import com.example.filmes.data.model.movie.Movie
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 

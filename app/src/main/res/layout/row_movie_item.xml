@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="com.example.filmes.data.model.Movie" />
+            type="com.example.filmes.data.model.movie.Movie" />
 
     </data>
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cast"
+            type="com.example.filmes.data.model.cast.Cast" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/row_Characters"
+        android:layout_width="145sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0sp">
+
+
+        <ImageView
+            android:id="@+id/imageCharacter"
+            loadImageDescription="@{cast.baseUrlImage+cast.profilePath}"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:scaleType="centerInside"
+            tools:srcCompat="@tools:sample/avatars"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="1dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{cast.originalName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageCharacter"
+            app:layout_constraintStart_toStartOf="@+id/imageCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/imageCharacter"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@string/nome_personagem" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

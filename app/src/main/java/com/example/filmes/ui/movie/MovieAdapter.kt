@@ -3,13 +3,11 @@ package com.example.filmes.ui.movie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmes.databinding.RowMovieItemBinding
-import com.example.filmes.data.model.Movie
+import com.example.filmes.data.model.movie.Movie
 
 class MovieAdapter : PagingDataAdapter<Movie, MovieAdapter.MyViewHolder>(COMPARATOR) {
 
